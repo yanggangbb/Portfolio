@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yanggang's Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+          <li><button onclick="scrollToSection(0)">HOME</button></li>
+          <li><button onclick="scrollToSection(1)">ABOUT</button></li>
+          <li><button onclick="scrollToSection(2)">SKILLS</button></li>
+          <li><button onclick="scrollToSection(3)">PROJECTS</button></li>
+          <li><button onclick="scrollToSection(4)">CONTACT</button></li>
+      </ul>
+    </nav>
+  </header>
+    
+    <section id="home" class="full-page">
+      <div class="text">
+        <span class="title portfolio"></span><span class="blink">|</span>
+        <p class="content">Park JiHoo</p>
+      </div>
+    </section>
+
+    <section id="about" class="full-page">
+      <div class="me">
+        <div class="text">
+          <h1 class="title">ABOUT ME</h1>
+          <p class="content">안녕하세요:)</br>
+            끊임없이 연구하고 분석하며, 배우는 것을 즐기는 </br>
+            정보보호 지망생 박지후 입니다.</p>
+        </div>
+        <div class="image">
+          <img src="./image/엥.jpg" alt="image">
+        </div>
+      </div>
+      <div class="a">
+        <div class="1">
+          <h4>다양한 교내 경험</h4>
+          <p>서울디지텍고등학교 인공지능소프트웨어과 3기, 해킹보안동아리 ROOT 12기 회장으로 활동중입니다.</p>
+        </div>
+        <div class="2">
+          <h4>활발한 교외 활동</h4>
+          <p>다양한 교외 프로그램과 해커톤, 
+            공모전, 해킹방어대회 등에 참여하며 성과를 내고 있습니다.</p>
+        </div>
+        <div class="3">
+          <h4>계속되는 공부</h4>
+          <p>웹 취약점 분석에 깊은 관심이 있으며 침해사고 대응과 디지털 포렌식에도 관심을 가지고 공부하고 있습니다.</p>
+        </div>
+      </div>
+    </section>
+    
+    <section id="skills" class="full-page">
+        <h2 class="title">SKILLS</h2>
+        <p>Languages & Framework</p>
+        <div class="skills-img">
+          <img src="./image/엥.jpg" alt="c">
+          <img src="./image/엥.jpg" alt="c++">
+          <img src="./image/엥.jpg" alt="js">
+          <img src="./image/엥.jpg" alt="python">
+        </div>
+        <p>Tool</p>
+        <div class="skills-img">
+          <img src="./image/엥.jpg" alt="c">
+          <img src="./image/엥.jpg" alt="c++">
+          <img src="./image/엥.jpg" alt="c++">
+        </div>
+        <p>Others</p>
+        <div class="skills-img">
+          <img src="./image/엥.jpg" alt="c">
+          <img src="./image/엥.jpg" alt="c++">
+        </div>
+    </section>
+
+    <section id="projects" class="full-page">
+      <h2>PROJECTS</h2>
+      <div class="project-container">
+        <div class="project-card">
+          <img src="./image/project1.jpg" alt="프로젝트 1">
+          <div class="project-info">
+            <h3>웹사이트 취약점 분석 프로젝트</h3>
+            <p>설명: 웹 취약점을 분석하고 이를 해결하는 프로젝트입니다.</p>
+            <a href="#">프로젝트 보고서</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="./image/project2.jpg" alt="프로젝트 2">
+          <div class="project-info">
+            <h3>웹사이트 취약점 분석 프로젝트</h3>
+            <p>설명: 웹 취약점을 분석하고 이를 해결하는 프로젝트입니다.</p>
+            <a href="#">프로젝트 보고서</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="contact" class="full-page">
+        <h2>CONTACT</h2>
+        <p>이메일</p>
+    </section>
+    
+  <script>
+      const content = ["PORTFOLIO", "WHITEHACKER", "SECURITY"];
+      const text = document.querySelector(".portfolio");
+      let i = 0;
+      let j = 0;
+      let isDeleting = false;
+          
+      const typing = () => {
+        if (!isDeleting) {
+          text.innerHTML = content[i].substring(0, j++);
+          if (j > content[i].length) {
+            isDeleting = true;
+            setTimeout(typing, 2000); 
+            return;
+          }
+        } else {
+          text.innerHTML = content[i].substring(0, j--);
+          if (j === 0) {
+            isDeleting = false;
+            i = (i + 1) % content.length;
+          }
+        }
+        setTimeout(typing, isDeleting ? 200 : 250);
+      };
+
+      typing();
+
+      document.querySelectorAll('.navbar a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            
+            window.scrollTo({
+                top: targetSection.offsetTop,
+                behavior: 'smooth'
+            });
+        });
+    });
+    
+  
+    function openLink(url) {
+      window.open(url, '_blank');
+  }
+
+  function scrollToSection(index) {
+      const sections = document.querySelectorAll('.full-page');
+      sections[index].scrollIntoView({ behavior: 'smooth' });
+  }
+
+  document.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      const sections = document.querySelectorAll('.full-page');
+      let currentSectionIndex = Array.from(sections).findIndex(section => section.getBoundingClientRect().top >= 0);
+      if (e.deltaY > 0) {
+          currentSectionIndex = Math.min(sections.length - 1, currentSectionIndex + 1);
+      } else {
+          currentSectionIndex = Math.max(0, currentSectionIndex - 1);
+      }
+      sections[currentSectionIndex].scrollIntoView({ behavior: 'smooth' });
+  }, { passive: false });
+
+  </script>
+</body>
+</html>

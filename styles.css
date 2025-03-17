@@ -1,0 +1,277 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+a {
+  text-decoration: none;
+  color: #808080;
+  transition: 0.5s;
+}
+
+body {
+  background-color: #000000a4;
+  color: #fff;
+  width: 100vw;
+  overflow-x: hidden  ;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  z-index: 100;
+}
+
+nav ul {
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+  gap: 20px;
+  padding: 20px;
+}
+nav button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  position: relative;
+}
+nav button::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 0;
+  background: white;
+  transition: width 0.3s ease;
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+}
+nav button:hover::after {
+  width: 100%;
+}
+
+.full-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+#home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to bottom, #181818, #222);
+  text-align: center;
+}
+
+#home .text {
+  position: relative;
+}
+
+#home .title {
+  font-size: 8rem;
+  font-weight: bold;
+  letter-spacing: 5px;
+}
+
+#home .content {
+  font-size: 2rem;
+}
+
+.blink {
+  font-size: 8rem;
+  font-weight: bold;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+#about {
+  flex-direction: column;
+  background-color: #27354c;
+  padding: 50px 10%;
+}
+
+#about .me {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+#about .me .text {
+  flex: 1;
+}
+
+#about .me .text .title {
+  font-size: 4rem;
+  color: #fefefe;
+}
+
+#about .me .text .content {
+  margin-top: 20px;
+  font-size: 2rem;
+  color: #f4f4f4;
+}
+
+#about .me .image {
+  align-items: center;
+  justify-content: center;  
+  width: 300px;
+  border-radius: 50%;
+}
+
+#about .me .image img {
+  margin-top: 30px;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  box-shadow: 0px 10px 20px rgba(255, 255, 255, 0.3);
+}
+
+#about .a {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 80px;
+}
+
+#about .a div {
+  width: 30%;
+  padding: 20px;
+  border-radius: 15px;
+  transition: transform 0.3s;
+}
+
+#about .a div:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 3px 5px rgba(36, 37, 55, 0.2);
+}
+
+#about .a h4 {
+  font-size: 1.8rem;
+  color: #fafafa;
+  margin-bottom: 10px;
+}
+
+#about .a p {
+  font-size: 1.2rem;
+  color: #f3f3f3;
+}
+
+#skills {
+  flex-direction: column;
+  background-color: #1a283e;
+  padding: 50px 10%;
+}
+
+#skills .title {
+  font-size: 4rem;
+  color: #fefefe;
+}
+
+.skills-img {
+  padding: 30px;
+  display: flex;
+  gap: 30px;
+}
+
+.skills-img > img {
+  width: 80px;
+  border-radius: 100px;
+}
+
+#projects {
+  flex-direction: column;
+  background-color: #0d141f;
+  padding: 50px 10%;
+}
+
+#projects .title {
+  font-size: 4rem;
+  color: #fefefe;
+}
+
+#projects .project {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 80px;
+}
+
+#projects .project div {
+  width: 30%;
+  padding: 20px;
+  border-radius: 15px;
+  transition: transform 0.3s;
+}
+
+#projects .project div:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 3px 5px rgba(36, 37, 55, 0.2);
+}
+
+#projects .project h4 {
+  font-size: 1.8rem;
+  color: #fafafa;
+  margin-bottom: 10px;
+}
+
+#projects .project p {
+  font-size: 1.2rem;
+  color: #f3f3f3;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .navbar {
+    text-align: center;
+  }
+  
+  #home .title {
+    font-size: 4rem;
+  }
+
+  .blink {
+    font-size: 4rem;
+  }
+
+  #about .me {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  #about .a {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #about .a div {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+
+  #projects .project {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #projects .project div {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+}
